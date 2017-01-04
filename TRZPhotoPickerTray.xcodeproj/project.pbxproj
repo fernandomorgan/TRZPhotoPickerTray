@@ -10,6 +10,30 @@
 		900048FD1E1C742500F998DF /* TRZPhotoPickerTray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900048F31E1C742500F998DF /* TRZPhotoPickerTray.framework */; };
 		900049021E1C742500F998DF /* TRZPhotoPickerTrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 900049011E1C742500F998DF /* TRZPhotoPickerTrayTests.m */; };
 		900049041E1C742600F998DF /* TRZPhotoPickerTray.h in Headers */ = {isa = PBXBuildFile; fileRef = 900048F61E1C742500F998DF /* TRZPhotoPickerTray.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9000490E1E1C744600F998DF /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9000490D1E1C744600F998DF /* assets.xcassets */; };
+		900049111E1C74F400F998DF /* TRZPhotoAssetCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 9000490F1E1C74F400F998DF /* TRZPhotoAssetCollectionViewCell.h */; };
+		900049121E1C74F400F998DF /* TRZPhotoAssetCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 900049101E1C74F400F998DF /* TRZPhotoAssetCollectionViewCell.m */; };
+		900049151E1C755500F998DF /* TRZPhotoPickerTrayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 900049131E1C755500F998DF /* TRZPhotoPickerTrayViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		900049161E1C755500F998DF /* TRZPhotoPickerTrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 900049141E1C755500F998DF /* TRZPhotoPickerTrayViewController.m */; };
+		9000491F1E1C767E00F998DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9000491E1E1C767E00F998DF /* main.m */; };
+		900049221E1C767E00F998DF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 900049211E1C767E00F998DF /* AppDelegate.m */; };
+		900049251E1C767E00F998DF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 900049241E1C767E00F998DF /* ViewController.m */; };
+		900049281E1C767E00F998DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 900049261E1C767E00F998DF /* Main.storyboard */; };
+		9000492A1E1C767E00F998DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 900049291E1C767E00F998DF /* Assets.xcassets */; };
+		9000492D1E1C767E00F998DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9000492B1E1C767E00F998DF /* LaunchScreen.storyboard */; };
+		900049321E1C778400F998DF /* TRZPhotoPickerTray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 900048F31E1C742500F998DF /* TRZPhotoPickerTray.framework */; };
+		900049331E1C778400F998DF /* TRZPhotoPickerTray.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 900048F31E1C742500F998DF /* TRZPhotoPickerTray.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9000493D1E1C801E00F998DF /* NSIndexSet+TRZPhotoPickerTray.h in Headers */ = {isa = PBXBuildFile; fileRef = 9000493B1E1C801E00F998DF /* NSIndexSet+TRZPhotoPickerTray.h */; };
+		9000493E1E1C801E00F998DF /* NSIndexSet+TRZPhotoPickerTray.m in Sources */ = {isa = PBXBuildFile; fileRef = 9000493C1E1C801E00F998DF /* NSIndexSet+TRZPhotoPickerTray.m */; };
+		900049411E1C967F00F998DF /* TRZPhotoPickerTrayActionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 9000493F1E1C967F00F998DF /* TRZPhotoPickerTrayActionCollectionViewCell.h */; };
+		900049421E1C967F00F998DF /* TRZPhotoPickerTrayActionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 900049401E1C967F00F998DF /* TRZPhotoPickerTrayActionCollectionViewCell.m */; };
+		900049451E1CB3D300F998DF /* TRZPhotoPickerTrayCamPreviewCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 900049431E1CB3D300F998DF /* TRZPhotoPickerTrayCamPreviewCollectionViewCell.h */; };
+		900049461E1CB3D300F998DF /* TRZPhotoPickerTrayCamPreviewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 900049441E1CB3D300F998DF /* TRZPhotoPickerTrayCamPreviewCollectionViewCell.m */; };
+		900049491E1CB9C200F998DF /* TRZCameraPreviewView.h in Headers */ = {isa = PBXBuildFile; fileRef = 900049471E1CB9C200F998DF /* TRZCameraPreviewView.h */; };
+		9000494A1E1CB9C200F998DF /* TRZCameraPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 900049481E1CB9C200F998DF /* TRZCameraPreviewView.m */; };
+		9000494D1E1D687A00F998DF /* TRZShutterControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 9000494B1E1D687A00F998DF /* TRZShutterControl.h */; };
+		9000494E1E1D687A00F998DF /* TRZShutterControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9000494C1E1D687A00F998DF /* TRZShutterControl.m */; };
+		900049591E1D794D00F998DF /* strip-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 900049581E1D794D00F998DF /* strip-frameworks.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,7 +44,28 @@
 			remoteGlobalIDString = 900048F21E1C742500F998DF;
 			remoteInfo = TRZPhotoPickerTray;
 		};
+		900049341E1C778400F998DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 900048EA1E1C742500F998DF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 900048F21E1C742500F998DF;
+			remoteInfo = TRZPhotoPickerTray;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		900049361E1C778400F998DF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				900049331E1C778400F998DF /* TRZPhotoPickerTray.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		900048F31E1C742500F998DF /* TRZPhotoPickerTray.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TRZPhotoPickerTray.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,6 +74,32 @@
 		900048FC1E1C742500F998DF /* TRZPhotoPickerTrayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TRZPhotoPickerTrayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		900049011E1C742500F998DF /* TRZPhotoPickerTrayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRZPhotoPickerTrayTests.m; sourceTree = "<group>"; };
 		900049031E1C742600F998DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9000490D1E1C744600F998DF /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
+		9000490F1E1C74F400F998DF /* TRZPhotoAssetCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRZPhotoAssetCollectionViewCell.h; sourceTree = "<group>"; };
+		900049101E1C74F400F998DF /* TRZPhotoAssetCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRZPhotoAssetCollectionViewCell.m; sourceTree = "<group>"; };
+		900049131E1C755500F998DF /* TRZPhotoPickerTrayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRZPhotoPickerTrayViewController.h; sourceTree = "<group>"; };
+		900049141E1C755500F998DF /* TRZPhotoPickerTrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRZPhotoPickerTrayViewController.m; sourceTree = "<group>"; };
+		9000491B1E1C767E00F998DF /* TRZPhotoPickerTrayExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TRZPhotoPickerTrayExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9000491E1E1C767E00F998DF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		900049201E1C767E00F998DF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		900049211E1C767E00F998DF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		900049231E1C767E00F998DF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		900049241E1C767E00F998DF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		900049271E1C767E00F998DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		900049291E1C767E00F998DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9000492C1E1C767E00F998DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9000492E1E1C767E00F998DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9000493B1E1C801E00F998DF /* NSIndexSet+TRZPhotoPickerTray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+TRZPhotoPickerTray.h"; sourceTree = "<group>"; };
+		9000493C1E1C801E00F998DF /* NSIndexSet+TRZPhotoPickerTray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+TRZPhotoPickerTray.m"; sourceTree = "<group>"; };
+		9000493F1E1C967F00F998DF /* TRZPhotoPickerTrayActionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRZPhotoPickerTrayActionCollectionViewCell.h; sourceTree = "<group>"; };
+		900049401E1C967F00F998DF /* TRZPhotoPickerTrayActionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRZPhotoPickerTrayActionCollectionViewCell.m; sourceTree = "<group>"; };
+		900049431E1CB3D300F998DF /* TRZPhotoPickerTrayCamPreviewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRZPhotoPickerTrayCamPreviewCollectionViewCell.h; sourceTree = "<group>"; };
+		900049441E1CB3D300F998DF /* TRZPhotoPickerTrayCamPreviewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRZPhotoPickerTrayCamPreviewCollectionViewCell.m; sourceTree = "<group>"; };
+		900049471E1CB9C200F998DF /* TRZCameraPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRZCameraPreviewView.h; sourceTree = "<group>"; };
+		900049481E1CB9C200F998DF /* TRZCameraPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRZCameraPreviewView.m; sourceTree = "<group>"; };
+		9000494B1E1D687A00F998DF /* TRZShutterControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRZShutterControl.h; sourceTree = "<group>"; };
+		9000494C1E1D687A00F998DF /* TRZShutterControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRZShutterControl.m; sourceTree = "<group>"; };
+		900049581E1D794D00F998DF /* strip-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "strip-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +118,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		900049181E1C767E00F998DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				900049321E1C778400F998DF /* TRZPhotoPickerTray.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -55,6 +134,7 @@
 			children = (
 				900048F51E1C742500F998DF /* TRZPhotoPickerTray */,
 				900049001E1C742500F998DF /* TRZPhotoPickerTrayTests */,
+				9000491C1E1C767E00F998DF /* TRZPhotoPickerTrayExample */,
 				900048F41E1C742500F998DF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +144,7 @@
 			children = (
 				900048F31E1C742500F998DF /* TRZPhotoPickerTray.framework */,
 				900048FC1E1C742500F998DF /* TRZPhotoPickerTrayTests.xctest */,
+				9000491B1E1C767E00F998DF /* TRZPhotoPickerTrayExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,7 +153,23 @@
 			isa = PBXGroup;
 			children = (
 				900048F61E1C742500F998DF /* TRZPhotoPickerTray.h */,
+				900049131E1C755500F998DF /* TRZPhotoPickerTrayViewController.h */,
+				900049141E1C755500F998DF /* TRZPhotoPickerTrayViewController.m */,
+				9000490F1E1C74F400F998DF /* TRZPhotoAssetCollectionViewCell.h */,
+				900049101E1C74F400F998DF /* TRZPhotoAssetCollectionViewCell.m */,
+				9000493F1E1C967F00F998DF /* TRZPhotoPickerTrayActionCollectionViewCell.h */,
+				900049401E1C967F00F998DF /* TRZPhotoPickerTrayActionCollectionViewCell.m */,
+				900049431E1CB3D300F998DF /* TRZPhotoPickerTrayCamPreviewCollectionViewCell.h */,
+				900049441E1CB3D300F998DF /* TRZPhotoPickerTrayCamPreviewCollectionViewCell.m */,
+				900049471E1CB9C200F998DF /* TRZCameraPreviewView.h */,
+				900049481E1CB9C200F998DF /* TRZCameraPreviewView.m */,
+				9000494B1E1D687A00F998DF /* TRZShutterControl.h */,
+				9000494C1E1D687A00F998DF /* TRZShutterControl.m */,
+				9000490D1E1C744600F998DF /* assets.xcassets */,
 				900048F71E1C742500F998DF /* Info.plist */,
+				9000493B1E1C801E00F998DF /* NSIndexSet+TRZPhotoPickerTray.h */,
+				9000493C1E1C801E00F998DF /* NSIndexSet+TRZPhotoPickerTray.m */,
+				900049581E1D794D00F998DF /* strip-frameworks.sh */,
 			);
 			path = TRZPhotoPickerTray;
 			sourceTree = "<group>";
@@ -86,6 +183,30 @@
 			path = TRZPhotoPickerTrayTests;
 			sourceTree = "<group>";
 		};
+		9000491C1E1C767E00F998DF /* TRZPhotoPickerTrayExample */ = {
+			isa = PBXGroup;
+			children = (
+				900049201E1C767E00F998DF /* AppDelegate.h */,
+				900049211E1C767E00F998DF /* AppDelegate.m */,
+				900049231E1C767E00F998DF /* ViewController.h */,
+				900049241E1C767E00F998DF /* ViewController.m */,
+				900049261E1C767E00F998DF /* Main.storyboard */,
+				900049291E1C767E00F998DF /* Assets.xcassets */,
+				9000492B1E1C767E00F998DF /* LaunchScreen.storyboard */,
+				9000492E1E1C767E00F998DF /* Info.plist */,
+				9000491D1E1C767E00F998DF /* Supporting Files */,
+			);
+			path = TRZPhotoPickerTrayExample;
+			sourceTree = "<group>";
+		};
+		9000491D1E1C767E00F998DF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9000491E1E1C767E00F998DF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -93,6 +214,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				900049451E1CB3D300F998DF /* TRZPhotoPickerTrayCamPreviewCollectionViewCell.h in Headers */,
+				9000494D1E1D687A00F998DF /* TRZShutterControl.h in Headers */,
+				900049111E1C74F400F998DF /* TRZPhotoAssetCollectionViewCell.h in Headers */,
+				900049411E1C967F00F998DF /* TRZPhotoPickerTrayActionCollectionViewCell.h in Headers */,
+				9000493D1E1C801E00F998DF /* NSIndexSet+TRZPhotoPickerTray.h in Headers */,
+				900049151E1C755500F998DF /* TRZPhotoPickerTrayViewController.h in Headers */,
+				900049491E1CB9C200F998DF /* TRZCameraPreviewView.h in Headers */,
 				900049041E1C742600F998DF /* TRZPhotoPickerTray.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +264,25 @@
 			productReference = 900048FC1E1C742500F998DF /* TRZPhotoPickerTrayTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		9000491A1E1C767E00F998DF /* TRZPhotoPickerTrayExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9000492F1E1C767E00F998DF /* Build configuration list for PBXNativeTarget "TRZPhotoPickerTrayExample" */;
+			buildPhases = (
+				900049171E1C767E00F998DF /* Sources */,
+				900049181E1C767E00F998DF /* Frameworks */,
+				900049191E1C767E00F998DF /* Resources */,
+				900049361E1C778400F998DF /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				900049351E1C778400F998DF /* PBXTargetDependency */,
+			);
+			name = TRZPhotoPickerTrayExample;
+			productName = TRZPhotoPickerTrayExample;
+			productReference = 9000491B1E1C767E00F998DF /* TRZPhotoPickerTrayExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -155,6 +302,11 @@
 						DevelopmentTeam = R6FKJQPSSD;
 						ProvisioningStyle = Automatic;
 					};
+					9000491A1E1C767E00F998DF = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = R6FKJQPSSD;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 900048ED1E1C742500F998DF /* Build configuration list for PBXProject "TRZPhotoPickerTray" */;
@@ -163,6 +315,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 900048E91E1C742500F998DF;
 			productRefGroup = 900048F41E1C742500F998DF /* Products */;
@@ -171,6 +324,7 @@
 			targets = (
 				900048F21E1C742500F998DF /* TRZPhotoPickerTray */,
 				900048FB1E1C742500F998DF /* TRZPhotoPickerTrayTests */,
+				9000491A1E1C767E00F998DF /* TRZPhotoPickerTrayExample */,
 			);
 		};
 /* End PBXProject section */
@@ -180,6 +334,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				900049591E1D794D00F998DF /* strip-frameworks.sh in Resources */,
+				9000490E1E1C744600F998DF /* assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +346,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		900049191E1C767E00F998DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9000492D1E1C767E00F998DF /* LaunchScreen.storyboard in Resources */,
+				9000492A1E1C767E00F998DF /* Assets.xcassets in Resources */,
+				900049281E1C767E00F998DF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -197,6 +363,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9000494E1E1D687A00F998DF /* TRZShutterControl.m in Sources */,
+				900049461E1CB3D300F998DF /* TRZPhotoPickerTrayCamPreviewCollectionViewCell.m in Sources */,
+				9000494A1E1CB9C200F998DF /* TRZCameraPreviewView.m in Sources */,
+				900049421E1C967F00F998DF /* TRZPhotoPickerTrayActionCollectionViewCell.m in Sources */,
+				900049161E1C755500F998DF /* TRZPhotoPickerTrayViewController.m in Sources */,
+				900049121E1C74F400F998DF /* TRZPhotoAssetCollectionViewCell.m in Sources */,
+				9000493E1E1C801E00F998DF /* NSIndexSet+TRZPhotoPickerTray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +381,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		900049171E1C767E00F998DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				900049251E1C767E00F998DF /* ViewController.m in Sources */,
+				900049221E1C767E00F998DF /* AppDelegate.m in Sources */,
+				9000491F1E1C767E00F998DF /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -216,7 +399,31 @@
 			target = 900048F21E1C742500F998DF /* TRZPhotoPickerTray */;
 			targetProxy = 900048FE1E1C742500F998DF /* PBXContainerItemProxy */;
 		};
+		900049351E1C778400F998DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 900048F21E1C742500F998DF /* TRZPhotoPickerTray */;
+			targetProxy = 900049341E1C778400F998DF /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		900049261E1C767E00F998DF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				900049271E1C767E00F998DF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9000492B1E1C767E00F998DF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9000492C1E1C767E00F998DF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		900049051E1C742600F998DF /* Debug */ = {
@@ -326,10 +533,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = TRZPhotoPickerTray/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.troezen.TRZPhotoPickerTray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 			};
 			name = Debug;
 		};
@@ -344,10 +553,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = TRZPhotoPickerTray/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.troezen.TRZPhotoPickerTray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 			};
 			name = Release;
 		};
@@ -369,6 +580,30 @@
 				INFOPLIST_FILE = TRZPhotoPickerTrayTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.troezen.TRZPhotoPickerTrayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		900049301E1C767E00F998DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R6FKJQPSSD;
+				INFOPLIST_FILE = TRZPhotoPickerTrayExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.troezen.TRZPhotoPickerTrayExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		900049311E1C767E00F998DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R6FKJQPSSD;
+				INFOPLIST_FILE = TRZPhotoPickerTrayExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.troezen.TRZPhotoPickerTrayExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -398,6 +633,14 @@
 			buildConfigurations = (
 				9000490B1E1C742600F998DF /* Debug */,
 				9000490C1E1C742600F998DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9000492F1E1C767E00F998DF /* Build configuration list for PBXNativeTarget "TRZPhotoPickerTrayExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				900049301E1C767E00F998DF /* Debug */,
+				900049311E1C767E00F998DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
