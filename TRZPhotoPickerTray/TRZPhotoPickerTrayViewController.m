@@ -19,7 +19,7 @@
 static CGFloat const defaultMinHeight       = 224.0;
 static CGFloat const defaultMinImageHeight  = 106.0;
 static CGFloat const defaultItemSpacing     = 4.0;
-static CGFloat const defaultSectionSpacing  = 6.0;
+static CGFloat const defaultSectionSpacing  = 8.0;
 
 static NSString* const cellPhotos = @"cellPhotos";
 static NSString* const cellActions = @"cellActions";
@@ -282,6 +282,20 @@ static NSUInteger const numberOfSections = 3;
     }
 }
 
+- (BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PHAsset* asset = [self.fetchResult objectAtIndex:indexPath.row];
+    [self.delegate photoPicker:self willSelectedAsset:asset];
+    return YES;
+}
+
+- (BOOL) collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PHAsset* asset = [self.fetchResult objectAtIndex:indexPath.row];
+    [self.delegate photoPicker:self willDeSelectedAsset:asset];
+    return YES;
+}
+
 - (void) collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if ( indexPath.section == sectionForCameraRoll ) {
@@ -299,14 +313,14 @@ static NSUInteger const numberOfSections = 3;
     }
     
     CGFloat defaultHeight = CGRectGetHeight(self.view.bounds);
-    CGFloat width = CGRectGetWidth(self.view.bounds) / 3;
-    width = MIN(width, 150);
     
     if ( indexPath.section == sectionForActions ) {
-        CGFloat height = defaultHeight / 2 - collectionView.contentInset.bottom - collectionView.contentInset.top - defaultItemSpacing;        
+        CGFloat width = MIN(CGRectGetWidth(self.view.bounds) / 3, 150);
+        CGFloat height = defaultHeight / 2 - collectionView.contentInset.bottom - collectionView.contentInset.top - defaultItemSpacing;
         return CGSizeMake(width, height);
     }
     
+    CGFloat width = MIN(CGRectGetWidth(self.view.bounds) / 2, 180);
     CGFloat height = defaultHeight - collectionView.contentInset.bottom - collectionView.contentInset.top - defaultItemSpacing;
     return CGSizeMake(width, height);
 }
@@ -416,9 +430,15 @@ static NSUInteger const numberOfSections = 3;
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
+    NSURL* assetURL = info[UIImagePickerControllerReferenceURL];
+    BOOL isCameraImage = assetURL != nil;
     UIImage* image = info[UIImagePickerControllerOriginalImage];
     if ( image ) {
-        [self.delegate photoPicker:self image:image];
+        if ( isCameraImage && [self.delegate respondsToSelector:@selector(photoPicker:cameraImage:)] ) {
+            [self.delegate photoPicker:self cameraImage:image];
+        } else {
+            [self.delegate photoPicker:self image:image];
+        }
     }
     [picker dismissViewControllerAnimated:YES completion:nil];    
 }
