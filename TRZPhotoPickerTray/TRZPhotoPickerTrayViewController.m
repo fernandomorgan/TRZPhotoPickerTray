@@ -17,7 +17,7 @@
 #import "NSIndexSet+TRZPhotoPickerTray.h"
 
 static CGFloat const defaultMinHeight       = 224.0;
-static CGFloat const defaultMinImageHeight  = 106.0;
+static CGFloat const defaultImageHeight     = 100.0;
 static CGFloat const defaultItemSpacing     = 4.0;
 static CGFloat const defaultSectionSpacing  = 8.0;
 
@@ -99,6 +99,7 @@ static NSUInteger const numberOfSections = 3;
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    _imageSize = CGSizeMake(defaultImageHeight, defaultImageHeight);
     self.view.backgroundColor = [UIColor clearColor];
     
     UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
@@ -132,8 +133,6 @@ static NSUInteger const numberOfSections = 3;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.alwaysBounceHorizontal = YES;
     
-    _imageSize = CGSizeZero;
-    
     _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     _activityView.hidesWhenStopped = YES;
     [self.view addSubview:self.activityView];
@@ -143,6 +142,7 @@ static NSUInteger const numberOfSections = 3;
     [self.activityView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
     [self.activityView startAnimating];
     
+    [self.collectionView reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self initalizePhotoCollection];
     });
@@ -168,16 +168,6 @@ static NSUInteger const numberOfSections = 3;
 - (void) setAllowsMultiSelection:(BOOL)allowsMultiSelection
 {
     self.collectionView.allowsMultipleSelection = allowsMultiSelection;
-}
-
-- (void) viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    CGFloat defaultHeight = CGRectGetHeight(self.view.bounds) - (self.collectionView.contentInset.top + self.collectionView.contentInset.bottom);
-    NSUInteger lastRowNum = ((defaultHeight / 3) > defaultMinImageHeight ? 3 : 2) - 1;
-    CGFloat totalItemSpacing = lastRowNum * defaultItemSpacing;
-    CGFloat side = round( (defaultHeight - totalItemSpacing) / (CGFloat)(lastRowNum + 1) );
-    _imageSize = CGSizeMake(side, side);
 }
 
 #pragma mark -- UICollectionView Data source ---
