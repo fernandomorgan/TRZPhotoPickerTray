@@ -335,6 +335,9 @@
         NSLog(@"captureCameraStillImage: there is no current video capture");
         return;
     }
+    if ([connection isVideoOrientationSupported]) {
+        [connection setVideoOrientation:self.videoPreviewLayer.connection.videoOrientation];
+    }
     __weak typeof(self) weakSelf = self;
     [self.photoOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         if ( error ) {

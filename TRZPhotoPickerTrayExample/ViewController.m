@@ -13,6 +13,9 @@
 @interface ViewController () <TRZPhotoPickerTrayViewControllerDelegate>
 
 @property (weak,nonatomic) TRZPhotoPickerTrayViewController* photoPicker;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+@property (nonatomic) NSNumber* currentlyLoadingAssetID;
 
 @end
 
@@ -44,9 +47,32 @@
     }
 }
 
+- (void) loadAsset:(PHAsset*)asset
+{
+    if ( self.currentlyLoadingAssetID ) {
+        [[PHImageManager defaultManager] cancelImageRequest:self.currentlyLoadingAssetID.intValue];
+    }
+    
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    [options setSynchronous:NO];
+    [options setResizeMode:PHImageRequestOptionsResizeModeExact];
+    [options setDeliveryMode:PHImageRequestOptionsDeliveryModeHighQualityFormat];
+    [options setNetworkAccessAllowed:YES];
+    [options setVersion:PHImageRequestOptionsVersionCurrent];
+    
+    __weak typeof(self) weakSelf = self;
+    PHImageRequestID thumbReqID = [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage * _Nullable image, NSDictionary * _Nullable info) {
+        weakSelf.currentlyLoadingAssetID = nil;
+        weakSelf.imageView.image = image;
+    }];
+    self.currentlyLoadingAssetID = [NSNumber numberWithInt:thumbReqID];
+}
+
 - (void) photoPicker:(TRZPhotoPickerTrayViewController *)photoPickerTray image:(UIImage *)image
 {
     NSLog(@"photoPicker picked image size=%f,%f", image.size.width, image.size.height);
+    
+    self.imageView.image = image;
 }
 
 - (void) photoPicker:(nonnull TRZPhotoPickerTrayViewController*)photoPickerTray selectedAsset:(nonnull PHAsset*)asset
@@ -62,11 +88,13 @@
 - (void) photoPicker:(nonnull TRZPhotoPickerTrayViewController*)photoPickerTray cameraImage:(nonnull UIImage*)cameraImage
 {
     NSLog(@"photoPicker Camera image size=%f,%f", cameraImage.size.width, cameraImage.size.height);
+    self.imageView.image = cameraImage;
 }
 
 - (void) photoPicker:(nonnull TRZPhotoPickerTrayViewController*)photoPickerTray willSelectedAsset:(nonnull PHAsset*)asset
 {
     NSLog(@"photoPicker WILL Selected asset = %@", asset.description);
+    [self loadAsset:asset];
 }
 
 - (void) photoPicker:(nonnull TRZPhotoPickerTrayViewController*)photoPickerTray willDeSelectedAsset:(nonnull PHAsset*)asset

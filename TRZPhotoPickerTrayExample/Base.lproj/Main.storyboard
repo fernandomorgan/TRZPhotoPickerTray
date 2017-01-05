@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,9 +22,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DK-cy-c2q">
-                                <rect key="frame" x="145" y="119" width="84" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JPI-Ub-qsP">
+                                <rect key="frame" x="16" y="162" width="343" height="343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JPI-Ub-qsP" secondAttribute="height" multiplier="1:1" id="WxO-sf-W0k"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DK-cy-c2q">
+                                <rect key="frame" x="145" y="30" width="84" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CyS-Tu-EZq"/>
+                                    <constraint firstAttribute="width" constant="84" id="blD-V2-jge"/>
+                                </constraints>
                                 <state key="normal" title="Images Tray"/>
                                 <connections>
                                     <action selector="imagesTray:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iNr-Oy-D5o"/>
@@ -31,7 +41,17 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2DK-cy-c2q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BU6-qV-EkU"/>
+                            <constraint firstItem="JPI-Ub-qsP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Cb9-Ln-V3s"/>
+                            <constraint firstItem="JPI-Ub-qsP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Uzi-wv-EXJ"/>
+                            <constraint firstItem="2DK-cy-c2q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="acY-dG-psw"/>
+                            <constraint firstAttribute="trailing" secondItem="JPI-Ub-qsP" secondAttribute="trailing" constant="16" id="lyf-47-qKe"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="JPI-Ub-qsP" id="FM1-Oc-COY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
