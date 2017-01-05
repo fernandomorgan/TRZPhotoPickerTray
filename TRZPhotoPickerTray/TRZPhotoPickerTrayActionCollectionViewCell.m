@@ -8,7 +8,7 @@
 
 #import "TRZPhotoPickerTrayActionCollectionViewCell.h"
 
-static CGFloat const labelFontSize = 15.0;
+static CGFloat const labelFontSize = 14.0;
 static CGFloat const intervalBetweenLabelAndImage = 2.0;
 static CGFloat const marginHorizForView = 8.0;
 static CGFloat const marginVertForView = 12.0;
@@ -56,7 +56,8 @@ static CGFloat const marginVertForView = 12.0;
     [self.contentView addSubview:_imageView];
     
     _label = [[UILabel alloc] initWithFrame:CGRectZero];
-    _label.numberOfLines = 1;
+    _label.numberOfLines = 0;
+    _label.lineBreakMode = NSLineBreakByWordWrapping;
     _label.backgroundColor = [UIColor clearColor];
     _label.font = [UIFont systemFontOfSize:labelFontSize];
     _label.textAlignment = NSTextAlignmentCenter;
@@ -99,8 +100,7 @@ static CGFloat const marginVertForView = 12.0;
 
 - (void) setType:(TRZPhotoPickerTrayActionCollectionViewCellType)type
 {
-    _type = type;
-    
+    _type = type;    
     if ( type == TRZPhotoPickerTrayActionCollectionViewCellTypePhotoLibrary ) {
         self.label.text = [self labelForPhotoLibrary];
         self.imageView.image = [UIImage imageNamed:@"photoLibrary" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];

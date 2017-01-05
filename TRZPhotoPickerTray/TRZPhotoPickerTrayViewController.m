@@ -226,6 +226,8 @@ static NSUInteger const numberOfSections = 3;
             cell.type = TRZPhotoPickerTrayActionCollectionViewCellTypeCamera;
         } else if ( [self canUsePhotoLibrary] ) {
             cell.type = TRZPhotoPickerTrayActionCollectionViewCellTypePhotoLibrary;
+        } else {
+            NSLog(@"collectionView cell for action with invalid type");
         }
         return cell;
     }
@@ -265,17 +267,17 @@ static NSUInteger const numberOfSections = 3;
 {
     if ( indexPath.section == sectionForActions ) {
         TRZPhotoPickerTrayActionCollectionViewCell* cell = (TRZPhotoPickerTrayActionCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+        UIImagePickerController* controller = [[UIImagePickerController alloc] init];
+        controller.delegate = self;
         if ( cell.type == TRZPhotoPickerTrayActionCollectionViewCellTypePhotoLibrary ) {
-            UIImagePickerController* controller = [[UIImagePickerController alloc] init];
-            controller.delegate = self;
             controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            [self presentViewController:controller animated:YES completion:nil];
         } else if ( cell.type == TRZPhotoPickerTrayActionCollectionViewCellTypeCamera ) {
-            UIImagePickerController* controller = [[UIImagePickerController alloc] init];
-            controller.delegate = self;
             controller.sourceType = UIImagePickerControllerSourceTypeCamera;
-            [self presentViewController:controller animated:YES completion:nil];
+        } else {
+            NSLog(@"collectionView: didSelectItemAtIndexPath found wrong cell type for actions");
+            return;
         }
+        [self presentViewController:controller animated:YES completion:nil];
     } else if ( indexPath.section == sectionForCameraRoll ) {
         PHAsset* asset = [self.fetchResult objectAtIndex:indexPath.row];
         [self.delegate photoPicker:self selectedAsset:asset];
@@ -313,7 +315,6 @@ static NSUInteger const numberOfSections = 3;
     }
     
     CGFloat defaultHeight = CGRectGetHeight(self.view.bounds);
-    
     if ( indexPath.section == sectionForActions ) {
         CGFloat width = MIN(CGRectGetWidth(self.view.bounds) / 3, 150);
         CGFloat height = defaultHeight / 2 - collectionView.contentInset.bottom - collectionView.contentInset.top - defaultItemSpacing;
@@ -433,14 +434,15 @@ static NSUInteger const numberOfSections = 3;
     NSURL* assetURL = info[UIImagePickerControllerReferenceURL];
     BOOL isCameraImage = assetURL == nil;
     UIImage* image = info[UIImagePickerControllerOriginalImage];
-    if ( image ) {
-        if ( isCameraImage && [self.delegate respondsToSelector:@selector(photoPicker:cameraImage:)] ) {
-            [self.delegate photoPicker:self cameraImage:image];
-        } else {
-            [self.delegate photoPicker:self image:image];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        if ( image ) {
+            if ( isCameraImage && [self.delegate respondsToSelector:@selector(photoPicker:cameraImage:)] ) {
+                [self.delegate photoPicker:self cameraImage:image];
+            } else {
+                [self.delegate photoPicker:self image:image];
+            }
         }
-    }
-    [picker dismissViewControllerAnimated:YES completion:nil];    
+    }];
 }
 
 - (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker
