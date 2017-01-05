@@ -286,15 +286,19 @@ static NSUInteger const numberOfSections = 3;
 
 - (BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PHAsset* asset = [self.fetchResult objectAtIndex:indexPath.row];
-    [self.delegate photoPicker:self willSelectedAsset:asset];
+    if ( indexPath.section == sectionForCameraRoll ) {
+        PHAsset* asset = [self.fetchResult objectAtIndex:indexPath.row];
+        [self.delegate photoPicker:self willSelectedAsset:asset];
+    }    
     return YES;
 }
 
 - (BOOL) collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PHAsset* asset = [self.fetchResult objectAtIndex:indexPath.row];
-    [self.delegate photoPicker:self willDeSelectedAsset:asset];
+    if ( indexPath.section == sectionForCameraRoll ) {
+        PHAsset* asset = [self.fetchResult objectAtIndex:indexPath.row];
+        [self.delegate photoPicker:self willDeSelectedAsset:asset];
+    }
     return YES;
 }
 
