@@ -59,4 +59,20 @@
     NSLog(@"photoPicker DESelected asset = %@", asset.description);
 }
 
+- (void) photoPicker:(nonnull TRZPhotoPickerTrayViewController*)photoPickerTray cameraImage:(nonnull UIImage*)cameraImage
+{
+    NSLog(@"photoPicker Camera image size=%f,%f", cameraImage.size.width, cameraImage.size.height);
+}
+
+- (void) photoPicker:(nonnull TRZPhotoPickerTrayViewController*)photoPickerTray willSelectedAsset:(nonnull PHAsset*)asset
+{
+    NSLog(@"photoPicker WILL Selected asset = %@", asset.description);
+}
+
+- (void) photoPicker:(nonnull TRZPhotoPickerTrayViewController*)photoPickerTray willDeSelectedAsset:(nonnull PHAsset*)asset
+{
+    NSLog(@"photoPicker WILL DESelected asset = %@", asset.description);
+}
+
+
 @end

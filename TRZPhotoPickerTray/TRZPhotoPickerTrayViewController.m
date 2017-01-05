@@ -431,7 +431,7 @@ static NSUInteger const numberOfSections = 3;
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     NSURL* assetURL = info[UIImagePickerControllerReferenceURL];
-    BOOL isCameraImage = assetURL != nil;
+    BOOL isCameraImage = assetURL == nil;
     UIImage* image = info[UIImagePickerControllerOriginalImage];
     if ( image ) {
         if ( isCameraImage && [self.delegate respondsToSelector:@selector(photoPicker:cameraImage:)] ) {
