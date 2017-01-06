@@ -35,6 +35,8 @@ static NSUInteger const numberOfSections = 3;
 
 @property (nonatomic) UIActivityIndicatorView*          activityView;
 @property (nonatomic) UICollectionView*                 collectionView;
+@property (nonatomic) UIVisualEffectView*               blurBackgroundView;
+
 @property (nonatomic) CGSize                            imageSize;
 
 @property (nonatomic) PHFetchResult*                    fetchResult;
@@ -54,15 +56,16 @@ static NSUInteger const numberOfSections = 3;
     frame.origin.y = frame.size.height - defaultHeight;
     frame.size.height = defaultHeight;
     UIView* waitVW = [[UIView alloc] initWithFrame:frame];
-    waitVW.backgroundColor = [UIColor lightGrayColor];
-    [parentVC.view addSubview:waitVW];
+    waitVW.backgroundColor = [UIColor clearColor];
     
-    UIActivityIndicatorView* actVw = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    UIActivityIndicatorView* actVw = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     actVw.hidesWhenStopped = YES;
     actVw.center = waitVW.center;
+
+    [parentVC.view addSubview:waitVW];
     [waitVW addSubview:actVw];
-    [actVw startAnimating];
-    
+    waitVW.alpha = 0;
+
     TRZPhotoPickerTrayViewController* controller = [[TRZPhotoPickerTrayViewController alloc] initWithNibName:nil bundle:nil];
     NSBlockOperation* operation = [NSBlockOperation blockOperationWithBlock:^{
         [parentVC addChildViewController:controller];
@@ -87,6 +90,12 @@ static NSUInteger const numberOfSections = 3;
         });
     };    
     [[NSOperationQueue mainQueue] addOperation:operation];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        waitVW.alpha = 1;
+    } completion:^(BOOL finished) {
+        [actVw startAnimating];
+    }];
 }
 
 - (void) close
@@ -107,8 +116,14 @@ static NSUInteger const numberOfSections = 3;
     layout.minimumInteritemSpacing = defaultItemSpacing;
     layout.minimumLineSpacing = defaultItemSpacing;
     
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    _blurBackgroundView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    _blurBackgroundView.frame = self.view.bounds;
+    _blurBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:_blurBackgroundView];
+    
     _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
-    self.collectionView.backgroundColor = [UIColor lightGrayColor];
+    _collectionView.backgroundColor = [UIColor clearColor];
     
     [self.collectionView registerClass:[TRZPhotoAssetCollectionViewCell class] forCellWithReuseIdentifier:cellPhotos];
     [self.collectionView registerClass:[TRZPhotoPickerTrayActionCollectionViewCell class] forCellWithReuseIdentifier:cellActions];
@@ -120,10 +135,9 @@ static NSUInteger const numberOfSections = 3;
     if ( [self.collectionView respondsToSelector:@selector(prefetchDataSource)] ) {
         self.collectionView.prefetchDataSource = self;
     }
-    
     [self.view addSubview:self.collectionView];
-    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.collectionView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
     [self.collectionView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
     [self.collectionView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
@@ -140,9 +154,10 @@ static NSUInteger const numberOfSections = 3;
     self.activityView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.activityView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     [self.activityView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
+    
+    self.blurBackground = YES;
     [self.activityView startAnimating];
     
-    [self.collectionView reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self initalizePhotoCollection];
     });
@@ -168,6 +183,22 @@ static NSUInteger const numberOfSections = 3;
 - (void) setAllowsMultiSelection:(BOOL)allowsMultiSelection
 {
     self.collectionView.allowsMultipleSelection = allowsMultiSelection;
+}
+
+- (void) setBlurBackground:(BOOL)blurBackground
+{
+    if ( blurBackground && !UIAccessibilityIsReduceTransparencyEnabled() ) {
+        self.blurBackgroundView.hidden = NO;
+        self.collectionView.backgroundColor = [UIColor clearColor];
+    } else {
+        self.blurBackgroundView.hidden = YES;
+        self.collectionView.backgroundColor = [UIColor lightGrayColor];
+    }
+}
+
+- (BOOL) blurBackground
+{
+    return !self.blurBackgroundView.hidden;
 }
 
 #pragma mark -- UICollectionView Data source ---

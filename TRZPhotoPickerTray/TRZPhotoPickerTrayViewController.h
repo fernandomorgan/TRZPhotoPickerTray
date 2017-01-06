@@ -33,7 +33,8 @@
 @interface TRZPhotoPickerTrayViewController : UIViewController
 
 @property (weak, nonatomic) id<TRZPhotoPickerTrayViewControllerDelegate> _Nullable delegate;
-@property (nonatomic) BOOL  allowsMultiSelection;
+@property (nonatomic) BOOL  allowsMultiSelection; // default - YES
+@property (nonatomic) BOOL  blurBackground;  // default - YES
 
 + (void) createPhotoPickerTrayWithUIViewController:(nonnull UIViewController*)parentVC completion:(void ( ^ _Nullable )(TRZPhotoPickerTrayViewController  * _Nonnull  photoPicker))completion;
 
