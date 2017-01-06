@@ -66,6 +66,17 @@ static CGFloat const marginVertForView = 12.0;
     self.type = TRZPhotoPickerTrayActionCollectionViewCellTypeNone;
 }
 
+- (void) configureForParentClearBackground:(BOOL)parentBackgroundIsClear
+{
+    if ( parentBackgroundIsClear ) {
+        self.view.backgroundColor = [UIColor lightGrayColor];
+        self.label.textColor = [UIColor whiteColor];
+    } else {
+        self.view.backgroundColor = [UIColor whiteColor];
+        self.label.textColor = [UIColor blackColor];
+    }
+}
+
 - (void) layoutSubviews
 {
     [super layoutSubviews];

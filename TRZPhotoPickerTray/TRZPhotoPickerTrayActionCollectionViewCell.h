@@ -18,4 +18,6 @@ typedef NS_ENUM(NSUInteger, TRZPhotoPickerTrayActionCollectionViewCellType) {
 
 @property (nonatomic) TRZPhotoPickerTrayActionCollectionViewCellType    type;
 
+- (void) configureForParentClearBackground:(BOOL)parentBackgroundIsClear;
+
 @end

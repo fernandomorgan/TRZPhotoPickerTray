@@ -36,6 +36,7 @@ static NSUInteger const numberOfSections = 3;
 @property (nonatomic) UIActivityIndicatorView*          activityView;
 @property (nonatomic) UICollectionView*                 collectionView;
 @property (nonatomic) UIVisualEffectView*               blurBackgroundView;
+@property (nonatomic) UIView*                           demarcationLine;
 
 @property (nonatomic) CGSize                            imageSize;
 
@@ -155,6 +156,15 @@ static NSUInteger const numberOfSections = 3;
     [self.activityView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
     [self.activityView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
     
+    _demarcationLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 1.0)];
+    _demarcationLine.translatesAutoresizingMaskIntoConstraints = NO;
+    _demarcationLine.backgroundColor = [UIColor lightGrayColor];
+    [self.view addSubview:_demarcationLine];
+    [self.demarcationLine.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
+    [self.demarcationLine.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
+    [self.demarcationLine.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
+    [self.demarcationLine.heightAnchor constraintEqualToConstant:1.0].active = YES;
+    
     self.blurBackground = YES;
     [self.activityView startAnimating];
     
@@ -246,6 +256,7 @@ static NSUInteger const numberOfSections = 3;
         return cell;
     } else if ( indexPath.section == sectionForActions ) {
         TRZPhotoPickerTrayActionCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellActions forIndexPath:indexPath];
+        [cell configureForParentClearBackground:!self.blurBackgroundView.isHidden];
         if ( indexPath.row == 0 && [self hasCameraAvailable] ) {
             cell.type = TRZPhotoPickerTrayActionCollectionViewCellTypeCamera;
         } else if ( [self canUsePhotoLibrary] ) {
