@@ -8,9 +8,12 @@
 
 #import "TRZPhotoAssetCollectionViewCell.h"
 
+static CGFloat const cloudInset = 10;
+
 @interface TRZPhotoAssetCollectionViewCell ()
 @property (nonatomic) UIImageView*  imageView;
 @property (nonatomic) UIImageView*  selectedCheckMark;
+@property (nonatomic) UIImageView*  icloudView;
 @end
 
 @implementation TRZPhotoAssetCollectionViewCell
@@ -33,7 +36,8 @@
 
 - (void) commonInitializer:(CGRect)frame
 {
-    self.representedAssetIdentifier = @"";
+    _representedAssetIdentifier = @"";
+    _iCloud = NO;
     
     _imageView = [[UIImageView alloc] initWithFrame:frame];
     _imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -41,6 +45,12 @@
     _imageView.layer.cornerRadius = 10.0;
     _imageView.layer.masksToBounds = YES;
     [self.contentView addSubview:_imageView];
+    
+    _icloudView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cloud" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil]];
+    _icloudView.clipsToBounds = YES;
+    _icloudView.hidden = YES;
+    _icloudView.alpha = 0.7;
+    [self.contentView addSubview:_icloudView];
 
     UIImage* image = [UIImage imageNamed:@"deSelected" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
     _selectedCheckMark = [[UIImageView alloc] initWithImage:image];
@@ -56,13 +66,27 @@
     CGFloat x = CGRectGetMaxX(self.contentView.bounds) - self.selectedCheckMark.frame.size.width / 2 - 4;
     CGFloat y = CGRectGetMaxY(self.contentView.bounds) - self.selectedCheckMark.frame.size.height / 2 - 4;
     self.selectedCheckMark.center = CGPointMake(x, y);
+
+    CGRect frame = self.icloudView.frame;
+    frame.origin.x = cloudInset;
+    frame.origin.y = CGRectGetMaxY(self.contentView.bounds) - cloudInset  - CGRectGetHeight(frame);
+    self.icloudView.frame = frame;
 }
 
 - (void) prepareForReuse
 {
     [super prepareForReuse];
     self.imageView.image = nil;
+    self.icloudView.hidden = YES;
     self.representedAssetIdentifier = @"";
+}
+
+- (void) setICloud:(BOOL)iCloud
+{
+    _iCloud = iCloud;
+    if ( iCloud ) {
+        self.icloudView.hidden = NO;;
+    }
 }
 
 - (void) setImage:(UIImage *)image

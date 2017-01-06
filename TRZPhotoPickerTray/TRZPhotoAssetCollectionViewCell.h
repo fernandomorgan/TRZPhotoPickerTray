@@ -12,5 +12,6 @@
 
 @property (nonatomic, nonnull) NSString*    representedAssetIdentifier;
 @property (nonatomic, nonnull) UIImage*     image;
+@property (nonatomic) BOOL                  iCloud;
 
 @end

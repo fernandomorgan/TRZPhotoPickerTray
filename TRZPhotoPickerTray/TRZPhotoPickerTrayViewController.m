@@ -205,6 +205,9 @@ static NSUInteger const numberOfSections = 3;
                 cell.image = result;
             }
         }];
+        if ( [self assetNeedsToBeDownloadedFromCloud:asset] ) {
+            cell.iCloud = YES;
+        }
         return cell;
     } else if ( indexPath.section == sectionForOverlay ) {
         TRZPhotoPickerTrayCamPreviewCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellOverlay forIndexPath:indexPath];
@@ -230,7 +233,8 @@ static NSUInteger const numberOfSections = 3;
     NSMutableArray* arr = [NSMutableArray new];
     for ( NSIndexPath* path in indexPaths ) {
         if ( path.section == sectionForCameraRoll ) {
-            [arr addObject:[self.fetchResult objectAtIndex:path.row]];
+            PHAsset* asset = [self.fetchResult objectAtIndex:path.row];
+            [arr addObject:asset];
         }
     }
     if ( arr.count ) {
@@ -356,6 +360,7 @@ static NSUInteger const numberOfSections = 3;
         _imageRequestOptions = [[PHImageRequestOptions alloc] init];
         _imageRequestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
         _imageRequestOptions.resizeMode = PHImageRequestOptionsResizeModeFast;
+        _imageRequestOptions.synchronous = NO;
     }
     return _imageRequestOptions;
 }
@@ -379,6 +384,21 @@ static NSUInteger const numberOfSections = 3;
         _fetchResult = [PHAsset fetchAssetsWithOptions:options];
     }
     return _fetchResult;
+}
+
+- (BOOL) assetNeedsToBeDownloadedFromCloud:(PHAsset*)asset
+{
+    __block BOOL isICloud = NO;
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.synchronous = YES;
+    options.networkAccessAllowed = NO;
+    [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+        NSNumber* icloud = [info valueForKey:PHImageResultIsInCloudKey];
+        if ( icloud.boolValue && !imageData.length ) {
+            isICloud = YES;
+        }
+    }];
+    return isICloud;
 }
 
 #pragma mark --- Photo Library ----
