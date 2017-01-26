@@ -100,24 +100,23 @@
 #else
     AVCaptureDevice *videoDevice;
     if ( [self iOS10Minimum] ) {
-        videoDevice = [AVCaptureDevice defaultDeviceWithDeviceType:AVCaptureDeviceTypeBuiltInWideAngleCamera
+        videoDevice = [AVCaptureDevice defaultDeviceWithDeviceType:AVCaptureDeviceTypeBuiltInDuoCamera
                                                          mediaType:AVMediaTypeVideo
-                                                          position:AVCaptureDevicePositionFront];
-        
+                                                          position:AVCaptureDevicePositionBack];        
         if ( !videoDevice ) {
-            videoDevice = [AVCaptureDevice defaultDeviceWithDeviceType:AVCaptureDeviceTypeBuiltInDuoCamera
+            videoDevice = [AVCaptureDevice defaultDeviceWithDeviceType:AVCaptureDeviceTypeBuiltInWideAngleCamera
                                                              mediaType:AVMediaTypeVideo
                                                               position:AVCaptureDevicePositionBack];
         }
         if ( !videoDevice ) {
             videoDevice = [AVCaptureDevice defaultDeviceWithDeviceType:AVCaptureDeviceTypeBuiltInWideAngleCamera
                                                              mediaType:AVMediaTypeVideo
-                                                              position:AVCaptureDevicePositionBack];
+                                                              position:AVCaptureDevicePositionFront];
         }
     } else {
-        videoDevice = [self legacyDevice:AVCaptureDevicePositionFront];
+        videoDevice = [self legacyDevice:AVCaptureDevicePositionBack];
         if ( !videoDevice ) {
-            videoDevice = [self legacyDevice:AVCaptureDevicePositionBack];
+            videoDevice = [self legacyDevice:AVCaptureDevicePositionFront];
         }
     }
     
